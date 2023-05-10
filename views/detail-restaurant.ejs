@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tết nhà hàng</title>
+    <link rel="shortcut icon" href="img/favicon-restaurant.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+      <!-- tại vì đã load assets bên file server.js chỗ app.use css, giờ chỉ cần /style.css là xong -->
+      <!-- <link rel="stylesheet" href="css/style.css"> -->
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html{
+            font-size: 62.5%;   /* 1rem = 10px, 1.6rem = 16px */
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root{
+            --dark: #2b2d42;
+            --light: #adb5bd;
+            --border: #dee2e6;
+            --border-btn: #edf2f4;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+
+
+        .btn.delete i {
+            font-size: 1.4rem;
+        }
+
+
+        .table td > a.btn.update {
+            padding: 0.6rem 0.8rem;
+            font-size: 1rem;
+
+        }
+        .table td > a.btn.btn.delete {
+            padding: 0.5rem 1rem;
+            font-size: 1.1rem;
+            padding-bottom: 0.55rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+
+
+        .nav-brand{
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .d-flex{
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .justify-between{
+            justify-content: space-between;
+        }
+
+        .text-center{
+            text-align: center;
+        }
+
+        .border-shadow{
+            border: 1px solid var(--border-btn);
+            box-shadow: 1px 3px 10px #e9ecef;
+        }
+
+        .text-dark{
+            color: var(--dark);
+        }
+
+        .inline{
+            display: inline-block;
+        }
+
+        .text-light{
+            color: var(--light);
+            font-size: 1.3rem;
+            font-weight: 400;
+        }
+
+        .text-gradient{
+            background: linear-gradient(to right, #8e2de2, #4a00e0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        #header nav{
+            background-color: #06d6a0;
+            padding: 1.2rem 0;
+            width: 100%;
+        }
+
+        #site-main{
+            margin-top: 6.5rem;
+            padding: 0 1.6rem;
+        }
+
+        #site-main .container .box-nav > a{
+            font-size: 1.6rem;
+            padding: 0.5rem 1rem;
+        }
+
+        #site-main .container .box-nav > .filter a{
+            font-size: 1.4rem;
+            padding: 0.5rem 1rem;
+        transition: left linear 0.2s;
+        }
+
+        #site-main .container .box-nav > .filter a:hover {
+            position: relative;
+            left: -2px;
+        }
+
+        #site-main .container form{
+            margin: 2rem 0;
+        }
+
+        table{
+            border-spacing: 0px;
+            width: 100%;
+        }
+
+        .table td, .table th{
+            font-size: 1.4rem;
+            padding: 0.75rem;
+            vertical-align: top;
+            text-align: center;
+            border: 1px solid var(--border);
+        }
+
+        .table td > a.btn{
+            margin: 0 0.2rem;
+        }
+        /* 
+        .table tr:hover{
+            background-color:#06d6a0 ;
+        }
+
+        .table tr:hover td > a{
+            box-shadow: none;
+        } */
+
+        .table .thead-dark th{
+            color: #fff;
+            background-color: var(--dark) ;
+            border-color: #32383e;
+        }
+
+        .form-title{
+            margin-top: 2.8rem;
+        }
+
+        .form-title > h2{
+            padding: 1rem 0;
+            font-size: 1.7rem;
+        }
+        .form-title > span{
+            padding: 1rem 0;
+            font-size: 1.5rem;
+            font-weight: 400;
+        }
+
+        .form-group label.text-light.center {
+            position: relative;
+            top: -2px;
+        }
+
+
+        /* Report */
+
+        .list-statistical {
+            position: relative;
+        }
+        
+
+        .item-statistical {
+            font-size: 1.4rem;
+            padding: 0.75rem;
+            vertical-align: top;
+            /* text-align: center; */
+            border-style: solid;
+            border-color: var(--border);
+            border-width: 1px 0 1px 1px;
+            
+        }  
+
+        .chart-layout {
+            position: absolute;
+            left: 34%;
+            /* top: 0; */
+            margin: 36px auto 0;
+            padding: 32px 0;
+            height: 320px;
+            background-color: #fff;
+            padding-bottom: 57px;
+            /* margin-bottom: 1px; */
+            display: flex;
+            /* justify-content: space-around;*/
+        }   
+
+        .chart-layout__item {
+            width: 60px;
+            color: #fff;
+            text-align: center;
+            display: flex;
+            align-items: flex-end;
+            justify-content: start; 
+            margin-right: 79px;
+            z-index: 9;
+            animation: growth ease-in 1s;
+        }
+        
+        .chart-layout__item-score, 
+        .chart-layout__item-grade {
+            background-color: #EF5122;
+            width: 100%;
+            border-top-left-radius: 2px;
+            border-top-right-radius: 2px;
+            height:calc(var(--percent) * 1%);
+        }
+
+        .chart-layout__item-grade {
+            color: #fff;
+        }
+
+        .chart-layout__title {
+            margin: 76px 0 24px;
+            font-size: 1.6rem;
+        }
+
+
+        .test {
+            display: flex;
+            align-items: center;
+            position: relative;
+            top: 309px;
+            left: -28px;
+            font-size: 1.4rem;
+            margin: 14px    ;
+        }
+
+
+
+        @keyframes growth {
+            from {
+                height: 0;
+                opacity: 0;
+            }
+            to {
+                height:  calc(var(--percent) * 1%);
+                opacity: 1;
+            }
+        } 
+
+    </style>
+</head>
+<body>
+    <header id="header">
+        <nav>
+            <div class="container">
+                <div class="text-center">
+                    <a href="/" class="nav-brand text-dark">Quản lí hệ thống nhà hàng</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main id="site-main">
+        <div class="container">
+            <div class="box-nav d-flex-justify-between">
+                <div class="filter">
+                    <a href="/">
+                        <i class="fa-solid fa-angles-left"></i>
+                        <span style="font-size: 1.5rem;">
+                            Tất cả nhà hàng
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="form-title text-center">
+                <h2 class="text-dark" style="padding-bottom: 20px">Chi tiết nhà hàng</h2>
+            </div>
+    
+            <!-- Form handling -->
+            <form action="/" method="POST">
+                <table class="table">
+                        <tr>
+                            <td><b>ID</b></td>
+                            <td><%= restaurants.restaurant_id%></td>
+                        </tr>
+                        <tr>
+                            <td><b>Tên</b></td>
+                            <td><%= restaurants.name%></td>
+                        </tr>
+                        <tr>
+                            <td><b>Quận</b></td>
+                            <td><%= restaurants.borough%></td>
+                        </tr>
+                        <tr>
+                            <td><b>Ẩm thực</b></td>
+                            <td><%= restaurants.cuisine%></td>
+                        </tr>
+                        <tr>
+                            <td><b>Địa chỉ</b></td>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td><b>Đường</b></td>
+                                        <td><%= restaurants.address['street']%></td>
+                                    </tr>
+    
+                                    <tr>
+                                        <td><b>Toà nhà</b></td>
+                                        <td><%= restaurants.address['building']%></td>
+                                    </tr>
+    
+                                    <tr>
+                                        <td><b>Mã bưu chính</b></td>
+                                        <td><%= restaurants.address['zipcode']%></td>
+                                    </tr>
+                                        
+                                    <td><b>Tọa độ</b></td>
+                                    <% for(var i = 0; i < restaurants.address['coord'].length; i++) {%>
+                                        <td style="display: flex; flex-direction: column;"><%= restaurants.address['coord'][i]%></td>
+                                    <% } %>
+                                </table>
+                            </td>
+                        </tr>
+                        
+                        <tr>
+                            <td><b>Grades</b></td>
+                            <% for(var i = 0; i < restaurants.grades.length; i++) {%>
+                                <%  let date = new Date(restaurants.grades[i]['date']); %>
+                                <td style="display: flex; flex-direction: column;">
+                                    <table>
+                                        <tr>
+                                            <!-- <td style="width: 31%;"></td> -->
+                                            <td style="display: flex; flex-direction: column;"><%=date.toLocaleDateString('fr-FR')%> <%= date.toLocaleTimeString()%></td>
+                                            <td style="display: flex; flex-direction: column;"><%= restaurants.grades[i]['grade']%></td>
+                                            <td style="display: flex; flex-direction: column;"><%= restaurants.grades[i]['score']%></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            <% } %>
+                        </tr>
+                </table>
+            </form>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/js/index.js"></script>
+</body>
+</html> 

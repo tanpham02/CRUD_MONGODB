@@ -1,0 +1,39 @@
+
+<% for(var i = 0; i < restaurants.length; i++) {%>
+    <% var addressObj =  restaurants[i].address%>
+    <% var newAddress = {...addressObj} %>
+
+    <tr class="restaurant-item">
+        <td><%= i + 1 %></td><!-- i bắt đầu = 0  -->
+        <td><%= restaurants[i].restaurant_id%></td>
+        <td><%= restaurants[i].name%></td>
+        <td><%= restaurants[i].borough%></td>
+        <td><%= restaurants[i].cuisine%></td>
+        <td><%= newAddress.street%></td>
+
+        <td class="restaurant-item_action">    
+            <a href="/detail-restaurant?id=<%= restaurants[i]._id%>" class="btn border-shadow update">
+                <span class="text-gradient">
+                    Chi tiết
+                </span>
+            </a>
+
+            <a href="/update-restaurant?id=<%= restaurants[i]._id%>" class="btn border-shadow update">
+                <span class="text-gradient">
+                    <i class="fa-solid fa-pencil"></i>
+                </span>
+            </a>
+
+            <a href="/" class="btn border-shadow delete" data-id= <%= restaurants[i]._id %>>
+                <span class="text-gradient">
+                    <i class="fa-solid fa-xmark"></i>
+                </span>
+            </a>
+        </td>
+    </tr>
+<% } %>
+
+
+
+ 
+

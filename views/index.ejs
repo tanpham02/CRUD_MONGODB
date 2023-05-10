@@ -1,0 +1,98 @@
+
+<!-- include header -->
+<%- include('./include/_header'); %> 
+<!-- /include header -->
+
+
+
+<!-- Main Site -->
+<main id="site-main">
+    <!-- container -->
+    <div class="container">
+        <div class="search">
+            <!-- <i class="search-icon fa-sharp fa-solid fa-magnifying-glass"></i> -->
+            <form action="/search" method="GET" id="form-search" class="inactive">
+                <input type="text" name="q" placeholder="Tim kiếm">
+                <button>Tìm</button>
+            </form>
+        </div>
+
+        <div style="display: inline-block;" class="box-nav d-flex-justify-between">
+            <a href="/add-restaurant" class="border-shadow">
+                <span class="text-gradient">
+                    Thêm nhà hàng
+                    <i class="fa-solid fa-user"></i>
+                </span>
+            </a>
+        </div>
+
+        <!-- <form action="/sort" method="GET" id="form-sort">
+            <select id="sort">
+                <option value="x">-- Sort --</option>
+                <option value="Increase" name="Increase" >Increase</option>
+                <option value="Decrease" name="Decrease">Decrease</option>
+            </select>
+        </form> -->
+
+        <!-- Form handling -->
+        <form action="/" method="POST">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>STT</th>
+                        <th>ID</th>
+                        <th>Tên</th>
+                        <th>Quận</th>
+                        <th>Ẩm thực</th>
+                        <th>Đường</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+
+                <tbody class="restaurant-list">
+
+                    <!-- include show -->
+                    <%- include('./include/_show'); %> 
+                    <!-- /include show -->
+                    
+                </tbody>
+            </table>
+        </form>
+    </div>
+
+    <!-- Pagination -->
+        <ul class="pagination">
+           <!-- <li class="page-item previous-page disable">
+                <a href="#" class="page-link">Prev</a>
+           </li>
+           <li class="page-item current-page active">
+                <a href="#" class="page-link">1</a>
+           </li>
+           <li class="page-item dots">
+                <a href="#" class="page-link">...</a>
+           </li>
+           <li class="page-item current-page">
+                <a href="#" class="page-link">5</a>
+           </li>
+           <li class="page-item current-page">
+                <a href="#" class="page-link">6</a>
+           </li>
+           <li class="page-item dots">
+                <a href="#" class="page-link">...</a>
+           </li>
+           <li class="page-item current-page">
+                <a href="#" class="page-link">10</a>
+           </li>
+
+           <li class="page-item next-page disable">
+                <a href="#" class="page-link">Next</a>
+           </li> -->
+        </ul>
+</main>
+<!-- /Main Site -->
+
+
+
+<!-- include footer -->
+<%- include('./include/_footer'); %>
+<!-- /include footer -->

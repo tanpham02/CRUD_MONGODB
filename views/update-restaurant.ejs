@@ -1,0 +1,128 @@
+<!-- include header -->
+<%- include('./include/_header'); %> 
+<!-- /include header -->
+
+  <!-- Main Site -->
+  <main id="site-main">
+    <div class="container">
+        <div class="box-nav d-flex-justify-between">
+            <div class="filter">
+                <a href="/">
+                    <i class="fa-solid fa-angles-left"></i>
+                    <span style="font-size: 1.5rem;">
+                        Tất cả nhà hàng
+                    </span>
+                </a>
+            </div>
+        </div>
+
+        <div class="form-title text-center">
+            <h2 class="text-dark">Cập nhật nhà hàng</h2>
+            <span class="text-light">Sử dụng biểu mẫu bên dưới để cập nhật</span>
+        </div>
+
+        <!-- update user form -->
+            <!-- Form handling -->
+        <form id="update-restaurant">
+            <div class="edit-restaurant">
+                <div class="form-group">
+                    <label for="id" class="text-light">ID</label>
+                    <input type="hidden" name="id" id="id" value="<%=restaurants._id%>">  <!-- dùng để update thông qua id -->  
+                    <input type="text" name="restaurant_id" id="restaurant_id" value="<%=restaurants.restaurant_id%>"  placeholder="VD: 16413847">
+                </div>
+
+                <div class="form-group">
+                    <label for="name" class="text-light">Tên</label>
+                    <input type="text" name="name" id="name" value="<%=restaurants.name%>" placeholder="VD: Riviera Caterer">
+                </div>
+
+                <div class="form-group">
+                    <label for="borough" class="text-light">Quận</label>
+                    <input type="text" name="borough" id="borough" value="<%=restaurants.borough%>" placeholder="VD: Queens">
+                </div>
+
+                <div class="form-group">
+                    <label for="cuisine" class="text-light">Ẩm thực</label>
+                    <input type="text" name="cuisine" id="cuisine" value="<%=restaurants.cuisine%>" placeholder="VD: American">
+                </div>
+
+                <div class="form-group">
+                    <label for="street" class="text-light">Đường</label>
+                    <input type="text" name="street" id="street" value="<%=restaurants.address['street']%>" placeholder="VD: Morris Park Ave">
+                </div>
+                <div class="form-group">
+                    <label for="building" class="text-light">Tòa nhà</label>
+                    <input type="text" name="building" id="building" value="<%=restaurants.address['building']%>" placeholder="VD: Morris Park Ave">
+                </div>
+                <div class="form-group">
+                    <label for="zipcode" class="text-light">Mã bưu chính</label>
+                    <input type="text" name="zipcode" id="zipcode" value="<%=restaurants.address['zipcode']%>" placeholder="VD: Morris Park Ave">
+                </div>
+                <div class="form-group">
+                    <label for="coord" class="text-light">Tọa độ</label>
+                    <% for(var i = 0; i < restaurants.address['coord'].length; i++) {%>
+                        <input type="text" name="coord" id="coord" value="<%=restaurants.address['coord'][i]%>" placeholder="VD: Morris Park Ave">
+                    <% } %>
+                </div>
+
+                <% for(var i = 0; i < restaurants.grades.length; i++) {%>
+                    <div class="form-group">
+                        <label for="date" class="text-light">Ngày</label>
+                        <input type="datetime-local" name="date" value="<%=restaurants.grades[i]['date']%>" id="date" placeholder="VD: 2014-12-30T00:00:00.000+00:00">
+                    </div>
+                    <div class="form-group">
+                        <label for="grade" class="text-light">Khối</label>
+                        <input type="text" name="grade" id="grade" value="<%=restaurants.grades[i]['grade']%>" placeholder="VD: A">
+                    </div>
+                    <div class="form-group">
+                        <label for="score" class="text-light">Điểm</label>
+                        <input type="text" name="score" id="score" value="<%=restaurants.grades[i]['score']%>" placeholder="VD: 8">
+                    </div>
+                <% } %>
+
+                
+                <!-- <div class="form-group">
+                    <label for="gender" class="text-light center">Gender</label>
+                    <div class="radio inline">
+                        <input type="radio" name="gender" id="gender-1" value="male">
+                        <label for="gender-1" class="radio-label">Male</label>
+                    </div>
+                    <div class="radio inline">
+                        <input type="radio" name="gender" id="gender-2" value="female">
+                        <label for="gender-2" class="radio-label">Female</label>
+                    </div>
+                    <div class="radio inline">
+                        <input type="radio" name="gender" id="gender-3" value="orther">
+                        <label for="gender-3" class="radio-label">Orther</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="status" class="text-light center">Status</label>
+                    <div class="radio inline">
+                        <input type="radio" name="status" id="action-1" value="active">
+                        <label for="action-1" class="radio-label">Active</label>
+                    </div>
+                    <div class="radio inline">
+                        <input type="radio" name="status" id="action-2" value="inactive">
+                        <label for="action-2" class="radio-label">InActive</label>
+                    </div>
+                </div> -->
+
+                <button type="submit" class="btn text-dark update" onclick="redirectHome()">Save</button>
+            </div>
+        </form>
+    </div>
+</main>
+<!-- /Main Site -->
+
+<script>
+    function redirectHome() {
+        window.location.replace('/');
+    }
+
+</script>
+
+<!-- include footer -->
+<%- include('./include/_footer'); %>
+<!-- /include footer -->

@@ -1,0 +1,413 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* user-select: none; */
+}
+html{
+    font-size: 62.5%;   /* 1rem = 10px, 1.6rem = 16px */
+    font-family: 'Poppins', sans-serif;
+}
+
+:root{
+    --dark: #2b2d42;
+    --light: #adb5bd;
+    --border: #dee2e6;
+    --border-btn: #edf2f4;
+}
+
+#header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 2;
+}
+
+.search {
+    position: absolute;
+    top: 66px;
+    right: 113px;
+    z-index: 1;
+}
+
+input[name="q"] {
+    width: 230px;
+    padding: 5px 2px;
+    border-radius: 2px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.search button {
+    padding: 7px 8px;
+    border: none;
+    outline: none;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+}
+
+.btn.delete i {
+    font-size: 1.4rem;
+}
+
+
+.table td > a.btn.update {
+    padding: 0.6rem 0.8rem;
+    font-size: 1rem;
+
+}
+.table td > a.btn.btn.delete {
+    padding: 0.5rem 1rem;
+    font-size: 1.1rem;
+    padding-bottom: 0.55rem;
+}
+
+.container {
+    max-width: 1300px;
+    margin: auto;
+}
+
+
+.nav-brand{
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.d-flex{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.justify-between{
+    justify-content: space-between;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.border-shadow{
+    border: 1px solid var(--border-btn);
+    box-shadow: 1px 3px 10px #e9ecef;
+}
+
+.text-dark{
+    color: var(--dark);
+}
+
+.inline{
+    display: inline-block;
+}
+
+.text-light{
+    color: var(--light);
+    font-size: 1.3rem;
+    font-weight: 400;
+}
+
+.text-gradient{
+    background: linear-gradient(to right, #8e2de2, #4a00e0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#header nav{
+    background-color: #06d6a0;
+    padding: 1.2rem 0;
+    width: 100%;
+}
+
+#site-main{
+
+    margin-top: 8.5rem;
+    padding: 0 1.6rem;
+}
+
+#site-main .container .box-nav > a{
+    font-size: 1.6rem;
+    padding: 0.5rem 1rem;
+}
+
+#site-main .container .box-nav > .filter a{
+    font-size: 1.4rem;
+    padding: 0.5rem 1rem;
+   transition: left linear 0.2s;
+}
+
+#site-main .container .box-nav > .filter a:hover {
+    position: relative;
+    left: -2px;
+}
+
+#site-main .container form{
+    margin: 2rem 0;
+}
+
+table{
+    border-spacing: 0px;
+    width: 100%;
+}
+
+.table td, .table th{
+    font-size: 1.4rem;
+    padding: 0.75rem;
+    vertical-align: top;
+    text-align: center;
+    border-top: 1px solid var(--border);
+}
+
+.table td > a.btn{
+    margin: 0 0.2rem;
+}
+
+.table tr:hover{
+    background-color:#06d6a0 ;
+}
+
+.table tr:hover td > a{
+    box-shadow: none;
+}
+
+.table .thead-dark th{
+    color: #fff;
+    background-color: var(--dark) ;
+    border-color: #32383e;
+}
+
+/* @media only screen and (max-width: 1024px){
+    table, thead, tbody, th, td, tr{
+        display: block;
+    }
+
+    thead tr{
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    tr { border: 1px solid var(--border);}
+
+
+    td{
+        border: none;
+        position: relative;
+    }
+
+} */
+
+/* add restaurant & update restaurant template */
+.form-title{
+    margin-top: 2.8rem;
+}
+
+.form-title > h2{
+    padding: 1rem 0;
+    font-size: 1.7rem;
+}
+.form-title > span{
+    padding: 1rem 0;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+.new-restaurant, 
+.edit-restaurant{
+    max-width: 786px;
+    margin: auto;
+}
+
+#update-restaurant .form-group,
+#add-restaurant .form-group{
+    margin: 0.4rem 0;
+}
+
+#update-restaurant .form-group input[type="text"],
+#add-restaurant .form-group input[type="text"]{
+    width: 100%;
+    padding: 1.3rem 1.4rem;
+    margin: 0.5rem 0;
+    border: 1px solid var(--border);
+    font-size: 1.2rem;
+    border-radius: 0.2rem;
+}
+
+#update-restaurant .form-group input[type="email"],
+#add-restaurant .form-group input[type="email"]{
+    width: 100%;
+    padding: 1.3rem 1.4rem;
+    margin: 0.5rem 0;
+    border: 1px solid var(--border);
+    font-size: 1.2rem;
+    border-radius: 0.2rem;
+}
+
+
+.form-group input:focus {
+    outline: 1px solid #000;
+}
+
+#update-restaurant .form-group .radio,
+#add-restaurant .form-group .radio{
+    margin: 1rem 2rem;
+}
+
+/* adding style to radio buttons */
+.radio input[type='radio']{
+    position: absolute;
+    top: 2.5px;
+    left: 1.3px;
+    display: none;
+
+}
+
+.radio input[type='radio'] + .radio-label:before{
+    content: "";
+    background: var(--border-btn);
+    border-radius: 100%;
+    border: 1px solid var(--border);
+    display: inline-block;
+    width: 1.3rem;
+    height: 1.3rem;
+    position: relative;
+    top: 0.2rem;
+    right: 0rem;
+    margin-right: 0.5rem;
+    vertical-align: top;
+    cursor: pointer;
+    text-align: center;
+    -webkit-transition: all 250ms ease;
+    transition: all 250ms ease;
+}
+
+.radio input[type='radio']:checked + .radio-label:before{
+    background-color: #16db93;
+    box-shadow: inset 0 0 0 4px #e9ecef;
+}
+
+.radio input[type='radio']:focus + .radio-label:before{
+    outline: none;
+    border-color:#16db93;
+}
+
+.radio input[type='radio']:disabled + .radio-label:before{
+    box-shadow: inset 0 0 0 4px #e9ecef;
+    border-color: #b4b4b4;
+    background: #b4b4b4;
+}
+
+#update-restaurant button.btn.update, 
+#add-restaurant button.btn.update{
+    width: 100%;
+    padding: 0.9rem 1rem;
+    background-color:#16db93; 
+    border: none;
+    font-size: 1.3rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 0.2rem;
+    margin: 0.5rem 0;
+}
+
+#update-restaurant button.btn.update:hover,
+#add-restaurant button.btn.update:hover {
+    background-color:#3ddaa0
+}
+
+#update-restaurant .form-group .btn:hover,
+#add-restaurant .form-group .btn:hover{
+    background-color: var(--dark);
+    color: var(--border);
+}
+
+
+.radio .radio-label {
+    font-size: 1.2rem;
+}
+
+.radio.inline,
+.radio.inline label {
+    position: relative;
+    top: -2px;
+    cursor: pointer;
+}
+
+
+.form-group label.text-light.center {
+    position: relative;
+    top: -2px;
+}
+
+
+
+/* restaurant */
+
+.restaurant-item_action {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* pagination */
+.pagination{
+    text-align: center;
+    margin: 30px 30px 60px;
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination li {
+    margin: 5px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.pagination li a{
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    line-height: 45px;
+}
+
+.previous-page,
+.next-page {
+ background-color: #16db93;
+ width: 80px;
+ border-radius: 45px;
+ transition: 0.3s ease;
+}
+
+.previous-page:hover {
+    transform: translateX(-5px);
+}
+
+.next-page:hover {
+    transform: translateX(5px);
+}
+
+.previous-page.disable,
+.next-page.disable {
+    background-color: #ccc;
+    transform: translateX(0);
+    cursor: default;
+}
+
+.current-page,
+.dots {
+    background-color: #ccc;
+    width: 45px;
+    border-radius: 50%;
+}
+
+.current-page.active {
+    background-color: #16db93;
+}
